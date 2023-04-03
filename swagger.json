@@ -1,0 +1,273 @@
+{
+   "swagger":"2.0",
+   "info":{
+    "title":"BlogApp API",
+    "description":"BlogApp ",
+    "version":"1.0.0"
+   },
+   "host":"localhost:3000",
+   "basePath":"/",
+   "tags":[
+    {
+        "name":"BlogApp",
+        "description":"BlogApp API"
+    }
+   ],
+   "schemes":[
+    "http"
+   ],
+   "consumes":[
+    "application/json"
+   ],
+   "products":[
+    "application/json"
+
+   ],
+   "paths":{
+    "/getAllBlogs":{
+        "get":{
+         "description":"return all blogs",
+         "products":[
+            "application/json"
+        
+           ],
+           "responses":{
+            "200":{
+            "description":"list of blogs",
+            "schemes":{
+              "type":"array",
+              "items":{
+                "$ref":"#/definitions/getAllBlogs"
+              }
+            }
+            }
+           }
+        }
+    },
+    "/getAllUsers":{
+        "get":{
+         "description":"return all users",
+         "products":[
+            "application/json"
+           ],
+           "responses":{
+            "200":{
+            "description":"list of users",
+            "schemes":{
+              "type":"array",
+              "items":{
+                "$ref":"#/definitions/getAllUsers"
+              }
+            }
+            }
+           }
+        }
+    },
+    "/addNewBlog/{userId}":{
+      "post":{
+       "description":"addNewBlog",
+       "products":[
+          "application/json"
+         ],
+        "parameters":[{
+          "in":"body",
+          "name":"user",
+          "schema":{
+           "type":"Object",
+           "properties":{
+            "title":{
+             "type":"String",
+             "example":"blog"
+            },
+           "content":{
+             "type":"String",
+             "example":"New Blog"
+            }
+          }
+          }
+        },
+        {
+          "in": "path",
+          "name": "userId",
+          "type": "Object",
+          "description": " ID of the user to get.",
+          "properties":{
+            "_id":{
+             "type":"String",
+             "example":"63d162eeba69112c5bfd3d1e"
+            }
+        }
+      }],
+         "responses":{
+          "200":{
+          "description":"addBlog",
+          "schemes":{
+            "type":"Object",
+            "items":{
+              "$ref":"#/definitions/addNewBlog"
+            }
+          }
+          }
+         }
+      }
+  },
+  "/updateUser/{userId}":{
+    "put":{
+     "description":"updateUser",
+     "products":[
+        "application/json"
+       ],
+      "parameters":[{
+        "in":"body",
+        "name":"user",
+        "schema":{
+         "type":"Object",
+         "properties":{
+          "firstName":{
+           "type":"String",
+           "example":"mona"
+          },
+         "lastName":{
+           "type":"String",
+           "example":"ali"
+          },
+          "email":{
+            "type":"String",
+            "example":"ali@gmail.com"
+           },
+           "password":{
+            "type":"String",
+            "example":"ali@gmail.com"
+           },
+           "userName":{
+            "type":"String",
+            "example":"monona"
+           },
+           "age":{
+            "type":"Number",
+            "example":"33"
+           }
+           
+           
+           
+        }
+        }
+      },
+      {
+        "in": "path",
+        "name": "userId",
+        "type": "Object",
+        "description": " ID of the user to get.",
+        "properties":{
+          "_id":{
+           "type":"String",
+           "example":"63d162eeba69112c5bfd3d1e"
+          }
+      }
+    }],
+       "responses":{
+        "200":{
+        "description":"updateUser",
+        "schemes":{
+          "type":"Object",
+          "items":{
+            "$ref":"#/definitions/updateUser"
+          }
+        }
+        }
+       }
+    }
+},
+"/deleteUser/{userId}":{
+  "delete":{
+   "description":"delete user",
+   "products":[
+      "application/json"
+     ],
+    "parameters":[{
+    
+      "in": "path",
+      "name": "userId",
+      "type": "Object",
+      "description": " ID of the user to get.",
+      "properties":{
+        "_id":{
+         "type":"String",
+         "example":"63d162eeba69112c5bfd3d1e"
+        }
+    }
+  }],
+     "responses":{
+      "200":{
+      "description":"deleteUser",
+      "schemes":{
+        "type":"Object",
+        "items":{
+      "$ref":"#/definitions/deleteUser"
+        }
+      }
+      }
+     }
+  }
+}
+  
+   },
+   "definitions":{
+    "blog":{
+     "required":[
+         "_id",
+        "title",
+        "content"
+     ],
+     "properties":{
+      "_id":{
+        "type":"String"
+       },
+       "title":{
+        "type":"String"
+       },
+      "content":{
+        "type":"String"
+       }
+     }
+    },
+    "getAllBlogs":{
+        "$ref":"#/definitions/blog"
+    },
+    "user":{
+      "required":[
+        "firstName",
+        "lastName",
+        "email",
+        "password",
+        "userName",
+        "age"     
+    ],
+     "properties":{
+    "firstName":{"type":"String"},
+    "lastName":{"type":"String"},
+    "email":{"type":"String"},
+    "password":{"type":"String"},
+    "userName":{"type":"String"},
+    "age":{"type":"Number"},
+    "image":{"type":"Object"},
+    "isActive":{"type":"Boolean"},
+    "favTeams":{"type":"String"},
+    "userBlogs":{"type":"array"}
+      }
+     },
+     "getAllUsers":{
+         "$ref":"#/definitions/user"
+     },
+     "addBlog":{
+      "$ref":"#/definitions/blog"
+  },
+  "updateUser":{
+    "$ref":"#/definitions/user"
+},
+"deleteUser":{
+  "$ref":"#/definitions/user"
+}
+  }
+
+}

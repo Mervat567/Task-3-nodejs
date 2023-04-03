@@ -1,0 +1,12 @@
+const DELETE_USER="user:DELETE_USER"
+const GET_ALL_USERS="user:GET_ALL_USERS"
+const DELETE_BLOG="user:DELETE_BLOG"
+const GET_ALL_BLOGS="user:GET_ALL_BLOGS"
+
+
+module.exports={
+    DELETE_BLOG,
+    DELETE_USER,
+    GET_ALL_BLOGS,
+    GET_ALL_USERS
+}
